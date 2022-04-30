@@ -10,7 +10,7 @@ import { CartContext } from "../../../contexts/cart.context"
 
 import { signOutUser } from "../../../utils/firebase/firebase.utils"
 
-import './navigation.styles.scss'
+import {NavigationContainer, NavLink, NavLinks, LogoContainer} from './navigation.styles'
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext)
@@ -18,28 +18,28 @@ const Navigation = () => {
 
   return (
     <Fragment>
-      <div className="navigation">
-        <Link className="logo-container" to='/'>
+      <NavigationContainer>
+        <LogoContainer to='/'>
           <CrwnLogo className="logo" />
-        </Link>
-        <div className="nav-links-container">
-          <Link className="nav-link" to='/shop'>
+        </LogoContainer>
+        <NavLinks>
+          <NavLink to='/shop'>
             SHOP
-          </Link>
+          </NavLink>
           {
             currentUser ? (
-              <span className="nav-link" onClick={signOutUser}>SIGN OUT</span>
+              <NavLink as="span" onClick={signOutUser}>SIGN OUT</NavLink>
             ) : (
-              <Link className="nav-link" to='/auth'>
+              <NavLink to='/auth'>
                 SIGN IN
-              </Link>
+              </NavLink>
             )
           }
           <CartIcon />
-        </div>
+        </NavLinks>
         {/* components are always truthy values, statement below says "if both are true return  rightmost component" isCartOpen will just exit */}
-        {isCartOpen &&  <CartDropdown />}
-      </div>
+        {isCartOpen && <CartDropdown />} 
+      </NavigationContainer>
       <Outlet />
     </Fragment>
   )
