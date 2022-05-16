@@ -28,7 +28,6 @@ const SignInForm = () => {
     try { 
       const { user } = await signInAuthUserWithEmailAndPassword(email, password)
 
-
       resetFormFields()
     } catch (error) {
       switch (error.code) {
@@ -46,7 +45,7 @@ const SignInForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target
-
+    console.log(event)
     setFormFieds({...formFields, [name]: value})
   }
   
