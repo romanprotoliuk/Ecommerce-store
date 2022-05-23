@@ -5,8 +5,12 @@ import Button from '../button/button.component'
 import { CartDropdownContainer, EmptyMessage, CartItems } from './cart-dropdown.styles'
 import CartItem from '../cart-item/cart-item.component'
 
+import { CategoriesContext } from '../../contexts/categories.context'
+
 const CartDropdown = () => {
   const { cartItems } = useContext(CartContext)
+  const { categoriesMap } = useContext(CategoriesContext)
+  console.log(categoriesMap)
   const navigate = useNavigate()
 
   const goToCheckoutHandler = () => {
