@@ -5,11 +5,12 @@ import Button from '../button/button.component'
 import { CartDropdownContainer, EmptyMessage, CartItems } from './cart-dropdown.styles'
 import CartItem from '../cart-item/cart-item.component'
 
-import { CategoriesContext } from '../../contexts/categories.context'
+import { useSelector } from 'react-redux'
+import { selectCategoriesMap } from '../../store/categories/category.selector'
 
 const CartDropdown = () => {
   const { cartItems } = useContext(CartContext)
-  const { categoriesMap } = useContext(CategoriesContext)
+  const categoriesMap = useSelector(selectCategoriesMap)
   console.log(categoriesMap)
   const navigate = useNavigate()
 
